@@ -48,8 +48,11 @@ class ProductsOverviewScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         itemCount: loadedProducts.length,
         //what are we going to see in the screen
-        itemBuilder: (ctx, i) => ProductItem(loadedProducts[i].id,
-            loadedProducts[i].title, loadedProducts[i].imageUrl),
+        itemBuilder: (ctx, i) => ProductItem(
+          loadedProducts[i].id,
+          loadedProducts[i].title,
+          loadedProducts[i].imageUrl,
+        ),
         // structure - how many columns?
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
