@@ -14,17 +14,21 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MyShop',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.deepOrange,
-        fontFamily: 'Lato',
-      ),
-      home: ProductsOverviewScreen(),
-      routes : {
-        ProductDetailScreen.routeName : (ctx)=> ProductDetailScreen(),
-      }
+    // We need to rap our materialApp with a provider
+    return ChangeNotifierProvider(
+      // we need to create an instance of the listener class - ProductsProvider()
+      create: (ctx) => ProductsProvider(),
+      child: MaterialApp(
+          title: 'MyShop',
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.deepOrange,
+            fontFamily: 'Lato',
+          ),
+          home: ProductsOverviewScreen(),
+          routes: {
+            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          }),
     );
   }
 }
