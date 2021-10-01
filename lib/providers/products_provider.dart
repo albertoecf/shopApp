@@ -9,9 +9,6 @@ import '../models/product.dart';
 
 // Convert normal class in data container / listener
 
-
-
-
 class ProductsProvider with ChangeNotifier{
   List<Product> _items = [
     Product(
@@ -48,9 +45,15 @@ class ProductsProvider with ChangeNotifier{
     ),
   ];
   
+
+
   List<Product> get items{
     // we don't want a pointer to _items, instead we want the items items with ...
     return [..._items];
+  }
+
+  Product findById(String id){
+    return _items.firstWhere((prod) => prod.id == id);
   }
 
   void addProduct(){
