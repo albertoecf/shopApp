@@ -18,11 +18,12 @@ class ProductsGrid extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       itemCount: products.length,
       //what are we going to see in the screen
-      itemBuilder: (ctx, i) => ProductItem(
-        products[i].id,
-        products[i].title,
-        products[i].imageUrl,
-      ),
+      itemBuilder: (ctx, i) => ChangeNotifierProvider(create: (c)=> products[i] ,child: ProductItem(
+        // products[i].id,
+        // products[i].title,
+        // products[i].imageUrl,
+      ),),
+      
       // structure - how many columns?
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

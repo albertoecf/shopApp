@@ -5,7 +5,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import './product.dart';
 
 // Convert normal class in data container / listener
 
