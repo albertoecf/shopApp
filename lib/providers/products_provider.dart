@@ -1,5 +1,5 @@
 // A provider need to be defined with the help of a class and you then
-// you build a new provider based on the class definition 
+// you build a new provider based on the class definition
 
 // 'with' is like extends but allow you to mix/merge things from two classes
 
@@ -9,7 +9,7 @@ import './product.dart';
 
 // Convert normal class in data container / listener
 
-class ProductsProvider with ChangeNotifier{
+class ProductsProvider with ChangeNotifier {
   List<Product> _items = [
     Product(
       id: 'p1',
@@ -44,22 +44,39 @@ class ProductsProvider with ChangeNotifier{
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
   ];
-  
 
+  // var _showFavoritesOnly = false;
 
-  List<Product> get items{
+  List<Product> get items {
+    // if (_showFavoritesOnly) {
+      // return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
     // we don't want a pointer to _items, instead we want the items items with ...
     return [..._items];
   }
 
-  Product findById(String id){
+  List<Product> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
+  }
+
+
+  Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  void addProduct(){
+  // void showFavoritesOnly() {
+  //   _showFavoritesOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavoritesOnly = false;
+  //   notifyListeners();
+  // }
+
+  void addProduct() {
     //_items.add(value);
     // to thel all the widgets which are interested in this info
     notifyListeners();
   }
-
 }
