@@ -25,15 +25,18 @@ class _OrderItemState extends State<OrderItem> {
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
               onPressed: () {
-                _expanded = !_expanded;
+                setState(() {
+                  _expanded = !_expanded;
+                });
               },
             ),
           ),
-          // ignore: sdk_version_ui_as_code
+          
           if (_expanded)
             Container(
+              padding: EdgeInsets.symmetric(horizontal:15, vertical: 4),
               height: min(
-                widget.order.products.length * 20.0 + 100.0,
+                widget.order.products.length * 20.0 + 10.0,
                 180.0,
               ),
               child: ListView(
