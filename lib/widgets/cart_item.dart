@@ -27,8 +27,30 @@ class CartItem extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       ),
       direction: DismissDirection.endToStart,
-      onDismissed: (direction){
-        Provider.of<Cart>(context,listen: false).removeItem(productId);
+      confirmDismiss: (direction) {
+        return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text('Seguro que queres borrar?'),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(false);
+                },
+                child: Text('No'),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(true);
+                },
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        );
+      },
+      onDismissed: (direction) {
+        Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
       child: Card(
         margin: EdgeInsets.symmetric(
